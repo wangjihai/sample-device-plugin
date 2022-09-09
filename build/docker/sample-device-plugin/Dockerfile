@@ -16,7 +16,8 @@
 
 ## global scope TARGETPLATFORM
 ## ref: https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
-FROM --platform=${TARGETPLATFORM} golang:1.15.4 AS builder
+FROM --platform=${TARGETPLATFORM} golang:1.16.4 AS builder
+ENV GOPROXY="https://goproxy.cn,direct"
 ARG TARGETPLATFORM
 RUN echo "building for ${TARGETPLATFORM}"
 ARG WORKDIR="/go/src/github.com/yaoice/sample-device-plugin/"
